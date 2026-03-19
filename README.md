@@ -2,9 +2,9 @@
   <img src="assets/logo_transparent.png" width="120"/>
 </p>
 
-# STI Shield
+<h1 align="center">STI Shield</h1>
 
-<p align="left">
+<p align="center">
   <img src="https://img.shields.io/badge/platform-Android-blue"/>
   <img src="https://img.shields.io/badge/language-Kotlin-purple"/>
   <img src="https://img.shields.io/badge/architecture-MVVM-orange"/>
