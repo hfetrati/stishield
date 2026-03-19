@@ -26,6 +26,11 @@ STIShield is a native Android mHealth application built in **Kotlin** and **Jetp
 
 - **User Guidance & Engagement** — Onboarding flow introducing app features, daily reminder notifications to promote continued use, and built-in support options (e.g., reporting issues) to improve usability and retention.  
 
+## Screenshots
+
+| Knowledge Quest | STI Smart | Health Guard | Safe Talk | Leaderboard |
+|----------------|----------|--------------|-----------|-------------|
+| <img src="assets/knowledge_quest.jpg" width="180"/> | <img src="assets/sti_smart.jpg" width="180"/> | <img src="assets/health_guard.jpg" width="180"/> | <img src="assets/safe_talk.jpg" width="180"/> | <img src="assets/leaderboard.jpg" width="180"/> |
 
 ## Tech Stack
 
@@ -93,16 +98,6 @@ SECOND_ASSISTANT_ID = your_second_assistant_id
 3. Add your Firebase configuration and local properties
 4. Sync Gradle
 5. Run on an emulator or Android device
-
-
-
-## Screenshots
-
-| Knowledge Quest | STI Smart | Health Guard | Safe Talk | Leaderboard |
-|----------------|----------|--------------|-----------|-------------|
-| <img src="assets/knowledge_quest.jpg" width="180"/> | <img src="assets/sti_smart.jpg" width="180"/> | <img src="assets/health_guard.jpg" width="180"/> | <img src="assets/safe_talk.jpg" width="180"/> | <img src="assets/leaderboard.jpg" width="180"/> |
-
-
 
 ## License
 
