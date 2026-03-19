@@ -1,0 +1,436 @@
+[
+  {
+    "id": 0,
+    "title": "Level 1: Leaving Home",
+    "tasks": [
+      {
+        "id": 0,
+        "description": "In the kingdom of Zolunda, sacred health scrolls have vanished, leaving the land in confusion. As a chosen warrior, your mission is to retrieve them and restore lost wisdom. The journey ahead is filled with puzzles, mythical foes, and great challenges. \nAre you ready to embark on this quest?",
+        "choices": [
+          "Begin"
+        ]
+      },
+      {
+        "id": 1,
+        "description": "As dawn rises over Zolunda, the village awakens. Elder Nia watches over the land, her gaze wise and reassuring. Beside her, Kito the Talking Raven caws eagerly, ready for the adventure ahead.",
+        "choices": [
+          "Approach Elder Nia"
+        ]
+      },
+      {
+        "id": 2,
+        "description": "Elder Nia greets you warmly: <i>'Welcome! Before you begin your journey, you must gather provisions. First, you must seek out the village well for water.'</i>                            ",
+        "choices": [
+          "Visit the village well"
+        ]
+      },
+      {
+        "id": 3,
+        "description": "You approach the ancient well, its stones cool under the morning sun. As you peer into its depths, a whisper reaches your ears:\n<i>'To quench your thirst and draw from my depths,\nYou must first prove your wisdom and mental strength,\nSolve this riddle and the water shall flow free,\nBut fail, and you'll leave here with nothing but misery.'</i>\n<b>Riddle:</b>\n<i>'I am always coming but never arrive,\nI have a head, but never weep,\nI have a bed, but never sleep,\nI have a mouth, but never speak.\nWhat am I?'</i>",
+        "choices": [
+          "A Road",
+          "A Storm",
+          "A River",
+          "A Shadow"
+        ],
+        "correctChoiceIndex": 2
+      },
+      {
+        "id": 4,
+        "description": "The voice responds: <i>'Correct! You have proven your wisdom. Take the water you need.'</i>\nYou draw water from the well and fill your container.\n<b>Kito:</b> <i>'Great job! Now let's gather some food. The farmer should be able to help us.'</i>",
+        "choices": [
+          "Visit the farmer"
+        ]
+      },
+      {
+        "id": 5,
+        "description": "Approaching lush farmlands lined with wildflowers, you meet Farmer Duma, a wise man by his crops. He greets you with a smile.\n<b>Farmer Duma:</b> <i>'Ah, a young warrior on a quest! Elder Nia has sent you, hasn't she? To gather provisions for your journey, yes? Well, nothing in Zolunda is given without a bit of challenge. Answer my riddle correctly, and you shall have all the food you need.'\n</i> <b>Riddle:</b>\n<i>'I am not alive, but I grow; I don’t have lungs, but I need air; I don’t have a mouth, but water kills me. What am I?'</i>",
+        "choices": [
+          "A Stone",
+          "A Fire",
+          "A Shadow",
+          "A Tree"
+        ],
+        "correctChoiceIndex": 1
+      },
+      {
+        "id": 6,
+        "description": "Farmer Duma approves: <i>'Well done, young warrior! Take this food to strengthen your journey.'</i> He hands you fresh fruits, vegetables, and bread. Kito the Talking Raven lands on your shoulder: <i>'Well done! Now, we must visit the blacksmith for a sword and armor. We'll need them for the challenges ahead.'</i>",
+        "choices": [
+          "Visit the blacksmith"
+        ]
+      },
+      {
+        "id": 7,
+        "description": "The path to the blacksmith winds through Zolunda, alive with daily sounds. Approaching the forge, you hear the clang of hammer on anvil. The workshop, sturdy and warm, exudes smoke and a glowing forge. Blacksmith Kalani, a strong craftsman, nods as you arrive.\n<b>Blacksmith Kalani:</b><i>'Ah, another brave soul sent by Elder Nia! If you seek a sword and armor, you'll need to prove your worth. Answer this riddle correctly, and I'll equip you for your journey. Here is your riddle:'</i> <i>The more you take, the more you leave behind. What am I?</i>",
+        "choices": [
+          "Time",
+          "Shadows",
+          "Memories",
+          "Footsteps"
+        ],
+        "correctChoiceIndex": 3
+      },
+      {
+        "id": 8,
+        "description": "Blacksmith Kalani nods approvingly. <i>'Impressive, young warrior! You have proven your wit. Take this sword and armor. May they serve you well.'</i> He hands you a finely crafted sword and sturdy armor. <i>'May your path be safe. Return with the lost scrolls of health for Zolunda.'</i> Kito the Talking Raven flutters with excitement. <i>'Great job! Now, let's return to Elder Nia for further instructions.'</i>",
+        "choices": [
+          "Go back to Elder Nia"
+        ]
+      },
+      {
+        "id": 9,
+        "description": "You return to Elder Nia's hut as the village buzzes with activity. Elder Nia, eyes bright with pride, greets you: <i>'Welcome back! You've gathered the provisions and equipment well.'</i> She retrieves glowing potion vials from an ornate chest: <i>'These can heal or aid in battles. Use them wisely.'</i> She also hands you a worn scroll: <i>'Our last Scroll of Health—guard it well. Retrieve the lost scrolls for Zolunda. Good luck!'</i> <b>Well done! You got the first scroll! You earn 100 ⭐!</b>",
+        "choices": [
+          "View the scroll",
+          "Continue your journey"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "title": "Level 2: The Dark Grove",
+    "tasks": [
+      {
+        "id": 0,
+        "description": "You leave your village and enter the dense ancient forest, with light casting mystical patterns as it filters through the canopy. Cool air and distant calls surround you. After hours, you reach a clearing with an ancient stone altar covered in moss and five carved symbols: Sun, Moon, Mountain, River, and Tree. Kito lands on the altar: <i>'Ah, the Sacred Symbols! Arrange them correctly to pass. Ready for the challenge?'</i> You recall the elders’ teachings: <i>'The sun rises before the moon sets.'</i> <i>'The river flows after the mountain stands tall.'</i> <i>'The tree grows under the sun.'</i> <i>'You’ve got this! Trust the wisdom of the elders,'</i> Kito encourages, flapping his wings.",
+        "choices": [
+
+          "Moon, Sun, Mountain, Tree, River",
+        "Sun, Mountain, Moon, River, Tree",
+          "Sun, River, Moon, Mountain, Tree",
+          "Mountain, Tree, Sun, River, Moon"
+        ],
+        "correctChoiceIndex": 1
+      },
+      {
+        "id": 1,
+        "description": "The symbols glow softly and the altar shifts, revealing a hidden path. <i>'Great job!'</i> Kito caws. <i>'Let’s see what's in there!'</i>",
+        "choices": [
+          "Continue down the path"
+        ]
+      },
+      {
+        "id": 2,
+        "enemyName": "The Grove's Beast",
+        "description": "The path narrows as twisted trees close in with skeletal branches, an eerie silence in the cold air. Kito flutters nervously, scanning the shadows. Suddenly, a growl breaks the silence. The Beast of the Grove emerges, eyes glowing malevolently, dark energy bristling. It lunges; you dodge just in time, feeling the rush as its claws miss. The ground shakes from its strike. Kito caws above: <i>'That was close! Show it what you're made of!'</i>",
+        "choices": [
+          "Attack",
+          "Defend",
+          "Use Voodoo"
+        ]
+      },
+      {
+        "id": 3,
+        "description": "Kito lands on your shoulder: <i>'You did it! I knew you could take it down!'</i> The grove falls silent as dark energy lifts. You notice a glimmer and find an ornate scroll case beneath a tree, its carvings glowing. Kito, excited: <i>'Could this be one of the lost scrolls?'</i> You retrieve the case, feeling a warm energy. Opening it, you confirm: <i>'This is it,'</i> you whisper to Kito. <i>'Another lost scroll of health!'</i>",
+        "choices": [
+          "View the scroll",
+          "Continue your journey"
+        ]
+      }
+
+
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Level 3: The Swamplands of Shadows",
+    "tasks": [
+      {
+        "id": 0,
+        "description": "With the second scroll glowing in your hand, Kito warns: <i>'Don't get too comfy. That beast was just the beginning. More scrolls to find!'</i> You nod, aware of your quest's weight. The path ahead is dark and foreboding, the air cooler, with silence replacing nature's sounds. Kito scans from above: <i>'Heading to the Swamplands of Shadows,'</i> he says, adding with a smirk, <i>'Try not to get too gloomy.'</i> Entering deeper, mist swirls around your feet, the ground grows soft, and the air smells of damp decay. Distant whispers echo, all around you and nowhere at once.",
+        "choices": [
+          "Continue into the Swamplands"
+        ]
+      },
+      {
+        "id": 1,
+        "description": "Kito squawks, diving toward you: <i>'Watch out! Something's coming!'</i> A shadowy figure glides from the mist, its gaze piercing. <i>'None may pass without proving their worth,'</i> it hisses. <i>'Answer my riddle or be lost in the mist.'</i> You pause, but Kito whispers: <i>'Relax, just outsmart it! I'm here for support!'</i> The figure raises a hand; the ground trembles as voices form a question: <i>'What can fill a room, but takes up no space?'</i>",
+        "choices": [
+          "Water",
+          "Sound",
+          "Light",
+          "Air"
+        ],
+        "correctChoiceIndex": 2
+      },
+      {
+        "id": 2,
+        "description": "The shadowy figure fades, allowing you to pass. You navigate the misty swamp, trekking a narrow path heavy with the scent of decay. The mist thins to reveal a dark water body with a glowing object. As you approach, a force erupts, creating violent whirlpools and gusts that knock you back. A voice echoes: <i>'To cross, conquer this challenge: I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?'</i>",
+        "choices": [
+          "Echo",
+          "Wind",
+          "Fire",
+          "Thunder"
+        ],
+        "correctChoiceIndex": 0
+      },
+      {
+        "id": 3,
+        "description": "The water's turbulence subsides, and the whirlpools disappear. You dive into the calm waters, following a soft glow. The light reveals ancient, moss-covered ruins. At the bottom, you find a glowing wooden box. Inside is a scroll. A gentle breeze stirs, as if welcoming you. The third scroll of health is now in your hands.",
+        "choices": [
+          "View the scroll",
+          "Continue your journey"
+        ]
+
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Level 4: The Bargain",
+    "tasks": [
+      {
+        "id": 0,
+        "description": "You leave the swamp for a vibrant meadow, filled with warm air and birdsong. Bright grass and blue skies welcome you. <i>'That swamp was intense! It's refreshing here. Let's hope the village is welcoming.'</i> Ahead is a lively village by a forest, with children playing, merchants haggling, and an elderly merchant at a trinket stall catching your eye.",
+        "choices": [
+          "Approach the merchant"
+        ]
+      },
+      {
+        "id": 1,
+        "description": "The elderly merchant peers at you with curiosity as you approach his cluttered stall. <i>'What brings you here? Looking for something?'</i> You hint at your quest without revealing much, and he smiles knowingly. <i>'People here always search for something.'</i> As you talk, he uncovers an ornate object: a lost scroll of health. Noticing your excitement, he pauses: <i>'This seems important to you.'</i>",
+        "choices": [
+          "Continue talking to the merchant"
+        ]
+      },
+      {
+        "id": 2,
+        "description": "Intrigued, you ask about the scroll. The merchant taps his chin: <i>'Oh, this scroll? Got it from wandering healers in the southern desert. They said it could cure deadly ailments but didn't believe in it. I traded it for a few trinkets.'</i> He chuckles. <i>'Didn't realize its worth until I saw your reaction.'</i> His eyes narrow with curiosity. <i>'If you want it, I'm open to offers.'</i> Kito whispers, <i>'The merchant may not know its value. Offer something he can't refuse.'</i>",
+        "choices": [
+         "Offer him something valuable"
+        ]
+      },
+      {
+        "id": 3,
+        "description": "You reveal a vial—the voodoo potion from Elder Nia. <i>'It heals grave wounds and aids in battle,'</i> you explain. The merchant's eyes widen. He nods, <i>'Deal.'</i> as he trades the scroll for the potion. You secure the scroll, feeling accomplished. <i>'We got the scroll! Let's rest and celebrate—we've earned it.'</i>",
+        "choices": [
+          "View the scroll",
+          "Continue your journey"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Level 5: The Ruins",
+    "tasks": [
+      {
+        "id": 0,
+        "description": "You wake to a bustling village morning.\n<i>Kito</i> joins: <i>'Finally awake! We deserved the rest after the swamp.'</i>\nIn the lively market, tempting smells make your stomach growl. You overhear:\nVillager 1: <i>'Ruins have treasures.'</i>\nVillager 2: <i>'But beware of thieves.'</i>\n<i>Kito</i>: <i>'Sounds like our kind of adventure.'</i>\nA cloaked figure whispers, inviting you: <i>'Seek the scrolls? The thieves will challenge you. Follow the river to cliffside ruins; danger is everywhere.'</i>\nThe stranger vanishes.\n<i>Kito</i>: <i>'Food first, then adventure!'</i>",
+        "choices": [
+          "Continue"
+        ]
+      },
+      {
+        "id": 1,
+        "description": "Walking by the river, mist and forest scents envelop you as the terrain grows rugged near the cliffs. Twisted trees cast shadows on rocky ground with rustling leaves.\nThe climb is manageable, and at the top, the forest opens to a clearing with an overgrown stone wall.\nIn the center stands an ornate stone door, moss-covered and etched with shimmering symbols.\nA riddle is carved into the door:\n<i>'In the darkest night or brightest day, \nI remain unseen in every way. \nI can be big, or I can be small, \nBut without light, I do not exist at all. \nSpeak my name aloud to pass— \nOnly then will the way be cast.'</i>",
+        "choices": [
+          "Wind",
+          "Echo",
+          "Shadow",
+          "Fog"
+        ],
+        "correctChoiceIndex": 2
+      },
+      {
+        "id": 2,
+        "description": "For a moment, nothing happens. Then the stone door rumbles, carvings glowing softly and casting flickering light. It slowly grinds open, revealing a dark, narrow passage. A cool breeze carries the scent of earth and mystery. Shadows dance on the walls as the path ahead stretches into the unknown, awaiting your next step.",
+        "choices": [
+          "Enter the passageway"
+        ]
+      },
+      {
+        "id": 3,
+        "enemyName": "The Thief Boss",
+        "description": "You step through the dark passage, the air cool and damp. The corridor twists as the light fades. Finally, it opens into a sunlit clearing with ancient ruins.\nA group of thieves, led by a scarred Thief Boss, emerges. The boss twirls a blade: <i>'A brave soul in our hideout. Reconsider if you value your life!'</i>\nA thief laughs: <i>'Don’t scare them off. We want a fight!'</i>\nThe boss demands: <i>'Hand over valuables, or your stay becomes permanent!'</i>\nTension rises as Kito readies himself. It's time to defend yourself.",
+        "choices": [
+          "Attack",
+          "Defend",
+          "Use Voodoo"
+        ]
+
+      },
+      {
+        "id": 4,
+        "description": "The Thief Boss lies defeated, his gang fearful. The battle's echoes fade to silence.\nYou say: <i>'I am searching for an ancient scroll. Help me, and I may spare you.'</i>\nHe replies: <i>'I’ve heard rumors of a hidden chamber beneath the west ruins. It’s tricky, filled with traps. The scroll might be there.'</i>\nYou nod, signaling the thieves to leave. They quickly vanish into the wilderness.",
+        "choices": [
+          "Search for the hidden chamber"
+        ]
+      },
+      {
+        "id": 5,
+        "description": "You head west through rugged terrain, navigating overgrown paths and dense forests.\nAfter hours, you feel lost until Kito eagerly points out: <i>'Hey, look at that! I think I see something over there.'</i>\nFollowing his direction, you uncover an entrance hidden by vines and moss-covered stones, marked with ancient symbols.\nA heavy stone door reveals a sequence with a missing number: <i>'1, 1, 2, 6, 24, 120, ?'</i>\nKito, excitedly, suggests: <i>'I bet the missing number is the key to unlocking this door. Let’s figure it out and get inside!'</i>",
+        "choices": [
+          "144",
+          "240",
+          "5040",
+          "720"
+        ],
+        "correctChoiceIndex": 3
+      },
+      {
+        "id": 6,
+        "description":"The final number opens a stone door to a passage with glowing fungi. You dodge swinging spiked iron balls, with Kito exclaiming: <i>“Whoa, those things look like they’d make a real mess of you if you’re not careful!”</i>\nNext, you cross trap doors, narrowly avoiding spikes. In a lit chamber, a scroll rests on a pedestal. Suddenly, darts shoot out, and Kito warns: <i>“Watch out! They’re coming from everywhere!”</i>\nYou skillfully dodge, grab the scroll, and the traps deactivate. The tension fades, leaving you with a sense of triumph and closer to unlocking Zolunda's secrets.",
+        "choices": [
+          "View the scroll",
+          "Continue your journey"
+        ]
+
+      }
+
+
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Level 6: Elara",
+    "tasks":[
+      {
+        "id": 0,
+        "description": "Escaping the traps, you step into sunlight, leaving the damp ruins behind. Nearby, a majestic black horse with a glossy coat waits. Its saddle has intricate beadwork, and it nuzzles your hand as you approach, urging you to mount.\nKito flutters uneasily, muttering: <i>'I’ve got a bad feeling about this. A horse just sitting here? Something doesn’t add up.'</i>",
+        "choices": [
+          "Mount the horse"
+        ]
+      },
+      {
+        "id": 1,
+        "description": "You mount the horse, and it briskly guides you through lush hills and vibrant wildflowers. The air is fragrant, and the horse moves with purpose.\nYou arrive at a secluded grove with towering trees and filtered sunlight. In the center is a small, intricately decorated hut.",
+        "choices": [
+          "Inspect the hut"
+        ]
+      },
+      {
+        "id": 2,
+        "description": "You dismount at the hut, where a woman greets you warmly as Elara. \n<i>'You must be the brave warrior I've heard about!'</i> she says, inviting you in, where the air is filled with herbal aromas.\nElara shares her tale of how Elder Nia saved her during a crisis, forming a strong bond. \nShe explains her mission to protect a scroll, retrieved with Nyoka's help from dark sorcerers hiding it. \nElara reveals the scroll wrapped in woven cloth, displaying ancient symbols.",
+        "choices": [
+          "Accept the scroll"
+        ]
+
+      },
+      {
+        "id": 3,
+        "description": "Elara hands you the scroll, and the hut fills with warm, golden light. Incantations bring the hearth to life, and a gentle breeze fills the room with calming scents.\nElara, now serious, says: <i>'The next scroll is nearby, but reaching it requires caution.'</i> \nWith an encouraging smile, she adds: <i>'Rest now. My horse will guide you to the scroll's location tomorrow. Find solace here tonight.'</i>",
+        "choices": [
+          "View the scroll",
+          "Continue your journey"
+        ]
+
+      }
+
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Level 7: The Final Trial",
+    "tasks": [
+      {
+        "id": 0,
+        "description": "At dawn, beside Elara's hut, the black horse awaits. Elara advises: <i>'This last scroll is crucial for Zolunda. The path is perilous.'</i>\nMounting the horse, you're reminded: <i>'The final guardians will test you.'</i>\nKito mutters: <i>'Oh great, no pressure, huh?'</i>\nElara encourages caution and trust. Riding into the mist, her words echo: <i>'Proceed with caution.'</i>",
+        "choices": [
+          "Continue"
+        ]
+
+      },
+      {
+        "id": 1,
+        "description": "In the deepening mist, the ground grows uneven, and damp air clings to you. Kito watches the haze silently. Suddenly, the mist thickens ominously, and the horse hesitates. The air feels tense, heavy.\nA cold voice whispers: \n<i>'I am not held, but I can be caught. What am I?'</i>\nThe riddle repeats, sharper and impatient. The fog tightens, your heart races. Kito mutters, <i>'This... is not good. A riddle? Out here? Something’s definitely wrong.'</i>\nThe voice grows louder:\n<i>'I am not held, but I can be caught. What am I?'</i>\nThe mist is so dense you can barely see, as the voice demands an answer.",
+        "choices": [
+          "Shadow",
+          "Time",
+          "Whisper",
+          "Wind"
+        ],
+        "correctChoiceIndex": 3
+      },
+      {
+        "id": 2,
+        "description": "Your answer silences the voice, and the fog recedes. The horse moves forward steadily.\n<i>'Well, that was... unpleasant,'</i> Kito notes. <i>'You handled that well.'</i>\nThe mist clears, revealing jagged terrain with narrow paths.\nThe air turns icy, with an eerie wind howling, creating tension.\nAt a cliff’s edge, a dark, vine-covered cave looms ahead.\nKito eyes it warily. <i>'That looks... inviting,'</i> he quips. <i>'Is that our destination?'</i>",
+        "choices": [
+          "Inspect the cave"
+        ]
+      },
+      {
+        "id": 3,
+        "description": "The horse snorts and descends toward the cave. You stay alert, aware of the mission's weight and looming challenges.\nClose to the cave, the horse stops, uneasy. It won’t go further.\nThe cave entrance is dark and cold. You dismount, pat the horse, and turn to face the cave, heart racing for the final challenge.",
+        "choices": [
+          "Enter the cave"
+        ]
+      },
+      {
+        "id": 4,
+        "description": "You enter the dark cave, leaving light behind. The air is damp and metallic. A chill suggests you’re being watched.\nA rumble shakes the ground as glowing runes appear. You reach a chamber with a puzzle-like slab. Fiery symbols float in the air.\nWater rises quickly. Kito panics: <i>'This is bad! Solve this fast!'</i>\nThe fiery symbols pose a riddle: \n<i>'I can be broken without being touched, and my existence can be fleeting or enduring. I am often revealed in the quietest of moments. What am I?'</i>\nWater reaches your chest as you seek the answer.",
+        "choices": [
+          "Dream",
+          "Secret",
+          "Silence",
+          "Shadow"
+        ],
+        "correctChoiceIndex": 2
+      },
+      {
+        "id": 5,
+        "enemyName": "The Giant",
+        "description": "You solve the riddle, and fiery symbols burst into embers. Water recedes, quiet returns. You activate the stone slab, triggering the floor to become a slide that pulls you down.\nYou land in a glowing, mossy cavern. Distant growls and colder air hint at danger.\nA giant with a glowing-eyed roar emerges, wielding a colossal club. You ready your weapon for the impending battle.",
+        "choices": [
+          "Attack",
+          "Defend",
+          "Use Voodoo"
+        ]
+      },
+      {
+        "id": 6,
+        "description": "You land a decisive strike, and the giant falls with a thunderous roar.\nCatching your breath, you notice a golden glow from above. High in the ceiling, an orb suspended by an ethereal thread pulses with enchanting light, illuminating the cavern.",
+        "choices": [
+          "Climb the wall"
+        ]
+      },
+      {
+        "id": 7,
+        "enemyName": "The Flying Beast",
+        "description": "You climb with makeshift rope gear, guided by the orb's growing light. As you near it, a shriek erupts, and a winged, scaly creature attacks.\nKito distracts the creature, allowing you to recover and counterattack. The fierce battle rages as you dodge the beast's deadly claws and powerful wings.",
+        "choices": [
+          "Attack",
+          "Defend",
+          "Use Voodoo"
+        ]
+      },
+      {
+        "id": 8,
+        "description": "You land a decisive blow, and the creature collapses with an anguished cry.\nIts body crashes to the cavern floor, shuddering to a stop.\nBreathing heavily, you approach the still-glowing orb.",
+        "choices": [
+          "Climb further"
+        ]
+
+      },
+      {
+        "id": 9,
+        "description": "You climb the creaking ropes, closer to the orb's intense light.\nAt the top, you touch the ceiling and behold the orb, suspended and pulsating in radiant golds and fiery oranges. Its living light compels you as you reach out excitedly.",
+        "choices": [
+          "Take the orb"
+        ]
+
+      },
+      {
+        "id": 10,
+        "description": "You grasp the orb, and it dissolves into sparkling lights absorbed by the air. A scroll reappears and gently falls into your hands—a tangible symbol of your quest's success. You have found the last scroll.",
+        "choices": [
+          "View the scroll",
+          "Continue your journey"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Back Home",
+    "tasks": [
+      {
+        "id": 0,
+        "description": "With the last scroll, you return to Zolunda, feeling accomplished. The once perilous path now feels welcoming. Villagers cheer as you arrive. Elder Nia warmly says, <i>'You have done it. You have recovered all the scrolls and restored the lost knowledge. Zolunda is forever in your debt.'</i> Celebrations and songs honor your bravery, marking the journey's triumphant end.\n\nAll is well.",
+        "isFinalTask": true
+      }
+    ]
+  }
+]

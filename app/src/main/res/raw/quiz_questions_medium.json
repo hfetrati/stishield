@@ -1,0 +1,64 @@
+[
+  {
+    "id": 0,
+    "text": "<b>Which of the following is a possible long-term complication of untreated Chlamydia?</b>",
+    "choices": ["Heart disease", "Infertility", "Lung infection", "Kidney failure"],
+    "correctChoiceIndex": 1
+  },
+  {
+    "id": 1,
+    "text": "<b>There is a cure for Gonorrhea.</b>",
+    "choices": ["True", "False"],
+    "correctChoiceIndex": 0
+  },
+  {
+    "id": 2,
+    "text": "<b>It is easier to get HIV if a person has another Sexually Transmitted Disease.</b>",
+    "choices": ["True", "False"],
+    "correctChoiceIndex": 0
+  },
+  {
+    "id": 3,
+    "text": "<b>Having anal sex increases a person’s risk of getting Hepatitis B.</b>",
+    "choices": ["True", "False"],
+    "correctChoiceIndex": 0
+  },
+  {
+    "id": 4,
+    "text": "<b>Which STI can be transmitted through sharing needles, in addition to sexual contact?</b>",
+    "choices": ["Gonorrhea", "HIV", "Genital Herpes", "All of the above"],
+    "correctChoiceIndex": 1
+  },
+  {
+    "id": 5,
+    "text": "<b>There is no cure for Chlamydia.</b>",
+    "choices": ["True", "False"],
+    "correctChoiceIndex": 1
+  },
+  {
+    "id": 6,
+    "text": "<b>A woman who has Genital Herpes can pass the infection to her baby during childbirth.</b>",
+    "choices": ["True", "False"],
+    "correctChoiceIndex": 0
+  },
+  {
+    "id": 7,
+    "text": "<b>Human Papillomavirus (HPV) can cause Genital Warts.</b>",
+    "choices": ["True", "False"],
+    "correctChoiceIndex": 0
+  },
+  {
+    "id": 8,
+    "text": "<b>What is the best way to prevent the transmission of STIs during sexual activity?</b>",
+    "choices": ["Birth control pills", "Using condoms", "Taking antibiotics", "Showering before intercourse"],
+    "correctChoiceIndex": 1
+  },
+  {
+    "id": 9,
+    "text": "<b>Human Papillomavirus (HPV) can lead to cancer in women.</b>",
+    "choices": ["True", "False"],
+    "correctChoiceIndex": 0
+  }
+
+
+]

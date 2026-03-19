@@ -1,0 +1,118 @@
+[
+  {
+    "id": 0,
+    "text": "Hey! I’m here to have a quick chat about your sexual background and share personalized tips on vaccines and tests you should consider to prevent STIs, all based on CDC guidelines. Don’t worry, everything we discuss stays between us and won’t be saved anywhere. Plus, you’ll snag <b>100 ⭐</b> just for finishing this quick checkup for the first time! Ready? Let’s get started!",
+    "responses": [
+      "Start"
+    ]
+  },
+  {
+    "id": 1,
+    "text": "Which age group do you belong to?",
+    "responses": [
+      "18-24",
+      "25+"
+    ]
+  },
+  {
+    "id": 2,
+    "text": "What sex were you assigned at birth?",
+    "responses": [
+      "Male",
+      "Female"
+    ]
+  },
+  {
+    "id": 3,
+    "text": "Are you sexually active?",
+    "responses": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 4,
+    "text": "Do you have a new sexual partner?",
+    "responses": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 5,
+    "text": "Do you engage in sexual activities with multiple or anonymous partners?",
+    "responses": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 6,
+    "text": "Do you have a partner who has been diagnosed with a sexually transmitted disease (STD)?",
+    "responses": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 7,
+    "text": "Do you participate in receptive anal intercourse or perform oral sex acts?",
+    "responses": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 8,
+    "text": "Do you identify as any of the following categories?",
+    "responses": [
+      "Gay",
+      "Bisexual",
+      "Other men who have sex with men",
+      "None of the Above"
+    ]
+  },
+  {
+    "id": 9,
+    "text": "Have you ever shared needles, syringes, or any other injection drug equipment with someone else?",
+    "responses": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 10,
+    "text": "Are you currently pregnant or planning to conceive in the near future?",
+    "responses": [
+      "Yes",
+      "No"
+    ]
+  },
+  {
+    "id": 11,
+    "text": "Have you been vaccinated for hepatitis A?",
+    "responses": [
+      "Yes",
+      "No",
+      "Unsure"
+    ]
+  },
+  {
+    "id": 12,
+    "text": "Have you been vaccinated for hepatitis B?",
+    "responses": [
+      "Yes",
+      "No",
+      "Unsure"
+    ]
+  },
+  {
+    "id": 13,
+    "text": "Have you been vaccinated for HPV?",
+    "responses": [
+      "Yes",
+      "No",
+      "Unsure"
+    ]
+  }
+]

@@ -1,0 +1,36 @@
+# Gradle
+.gradle/
+build/
+app/build/
+
+# Local config
+local.properties
+
+# IDE
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+__MACOSX/
+
+# Native build
+.externalNativeBuild/
+.cxx/
+
+# Firebase config
+google-services.json
+app/google-services.json
+
+# Signing keys
+*.keystore
+*.jks
+
+# Logs
+*.log
+
+# Temp files
+tmp/
+*.tmp
+*.swp
+*.orig

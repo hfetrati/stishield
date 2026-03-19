@@ -1,0 +1,62 @@
+[
+  {
+    "id": 0,
+    "text": "<b>A man must have vaginal sex to get Genital Warts.</b>",
+    "choices": ["True", "False"],
+    "correctChoiceIndex": 1
+  },
+  {
+    "id": 1,
+    "text": "<b>Sexually Transmitted Diseases can lead to health problems that are usually more serious for men than women.</b>",
+    "choices": ["True", "False"],
+    "correctChoiceIndex": 1
+  },
+  {
+    "id": 2,
+    "text": "<b>There is no vaccine available for Gonorrhea.</b>",
+    "choices": ["True", "False"],
+    "correctChoiceIndex": 0
+  },
+  {
+    "id": 3,
+    "text": "<b>A person who has Genital Herpes must have open sores to give the infection to his or her sexual partner.</b>",
+    "choices": ["True", "False"],
+    "correctChoiceIndex": 1
+  },
+  {
+    "id": 4,
+    "text": "<b>There is no vaccine that prevents a person from getting Chlamydia.</b>",
+    "choices": ["True", "False"],
+    "correctChoiceIndex": 0
+  },
+  {
+    "id": 5,
+    "text": "<b>If a person had Gonorrhea in the past he or she is immune (protected) from getting it again.</b>",
+    "choices": ["True", "False"],
+    "correctChoiceIndex": 1
+  },
+  {
+    "id": 6,
+    "text": "<b>Human Papillomavirus (HPV) can cause HIV.</b>",
+    "choices": ["True", "False"],
+    "correctChoiceIndex": 1
+  },
+  {
+    "id": 7,
+    "text": "<b>A man can protect himself from getting Genital Warts by washing his genitals after sex.</b>",
+    "choices": ["True", "False"],
+    "correctChoiceIndex": 1
+  },
+  {
+    "id": 8,
+    "text": "<b>Which bodily fluid does NOT typically transmit HIV?</b>",
+    "choices": ["Blood", "Saliva", "Semen", "Breast milk"],
+    "correctChoiceIndex": 1
+  },
+  {
+    "id": 9,
+    "text": "<b>Which STI can be passed from a pregnant mother to her baby during childbirth, potentially causing blindness?</b>",
+    "choices": ["Syphilis", "Gonorrhea", "HPV", "All of the above"],
+    "correctChoiceIndex": 1
+  }
+]

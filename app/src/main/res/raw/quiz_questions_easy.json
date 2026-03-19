@@ -1,0 +1,94 @@
+  [
+    {
+      "id": 0,
+      "text": "<b>Which activity increases your risk for an STI?</b>",
+      "choices": [
+        "Anal sex","Oral sex","Having more than one sexual partner", "Using alcohol or drugs", "All of the above"
+      ],
+      "correctChoiceIndex": 4,
+      "explanation": "Any type of sex puts you at risk of getting an STI. Using alcohol or drugs makes you more likely to have unprotected sex. To reduce your risk of STIs, always use a condom or dental dam for any kind of sexual activity."
+    },
+  {
+    "id": 1,
+    "text": "<b>A female condom isn’t as good as a male condom at protecting against HIV.</b>",
+    "choices": [
+      "False","True"
+    ],
+    "correctChoiceIndex": 1,
+    "explanation": "Experts are not certain that female condoms work as well as male condoms when it comes to protection against HIV. But if your partner won’t wear a male condom, a female condom is better than using nothing."
+  },
+  {
+    "id": 2,
+    "text": "<b>Using a male condom and a female condom together gives you double protection.</b>",
+    "choices": [
+      "False","True"
+    ],
+    "correctChoiceIndex": 0,
+    "explanation": "Male and female condoms should never be used together. This can make them break or fall out of place, putting you at higher risk for STIs. For the best protection against STIs, use a male condom every time you have sex."
+  },
+  {
+    "id": 3,
+    "text": "<b>Using a lubricant with a condom makes it less likely to break.</b>",
+    "choices": [
+      "False","True"
+    ],
+    "correctChoiceIndex": 1,
+    "explanation": "Make sure to use a lubricant that is water-based, such as KY Jelly. Don’t use lubricants that are oil- or petroleum-based, such as petroleum jelly (e.g., Vaseline). These types of lubricants make latex condoms more likely to tear."
+  },
+  {
+    "id": 4,
+    "text": "<b>Which is the surest way to avoid STIs?</b>",
+    "choices": [
+      "Abstinence","Wearing a condom", "Having a monogamous relationship"
+    ],
+    "correctChoiceIndex": 0,
+    "explanation": "The only way to completely avoid STIs is to not have sex. If you do choose to have sex, you can lower your risk by wearing a condom, and having only one partner."
+  },
+  {
+    "id": 5,
+    "text": "<b>How do you know if you have an STI?</b>",
+    "choices": [
+      "A sexual partner has tested positive","You get a positive test result", "You are showing physical symptoms","All of the above"
+    ],
+    "correctChoiceIndex": 1,
+    "explanation": "Sometimes people have STIs but don’t show any symptoms at all! And at the same time, symptoms and irritations are regularly caused or shared by things totally unrelated to STIs. This is why getting tested can often be the only way you know for sure what’s going on with your sexual health."
+  },
+  {
+    "id": 6,
+    "text": "<b>When is a good time to get tested?</b>",
+    "choices": [
+      "After a sexual partner tells you they have an STI","When you have symptoms", "As part of your regular health care routine","All of the above"
+    ],
+    "correctChoiceIndex": 3,
+    "explanation": "Along with getting tested to check up on a change in your health (like when you have symptoms or when a sexual partner has tested positive), routine testing is a good way to be aware of what’s going on with your body on a more regular schedule. STIs don’t always show symptoms and partners don’t always contact everyone, so this can be a good strategy for managing your own health."
+  },
+  {
+    "id": 7,
+    "text": "<b>Getting tested for STIs means you have to:</b>",
+    "choices": [
+      "Get blood drawn", "Pee in a cup","Show your genitals to a clinician", "It depends"
+    ],
+    "correctChoiceIndex": 3,
+    "explanation": "Urine tests are for things like chlamydia or gonorrhea, blood tests check for things like HIV or syphilis, and a visual exam would be for a clinician to identify herpes or genital warts. You don’t need to do all the tests if you’re having symptoms specific to one STI or feel you’re only concerned about testing for certain STIs."
+  },
+  {
+    "id": 8,
+    "text": "<b>Along with routine testing, what else counts as “Safer Sex” tools or strategies?</b>",
+    "choices": [
+      "Barrier Methods (Condoms, Dental Dams, etc.)", "Talking with sexual partners about STI testing history and comfort with risks","Taking PrEP (pre-exposure prophylaxis) for preventing HIV", "All of the above"
+    ],
+    "correctChoiceIndex": 3,
+    "explanation": "Practicing “Safer Sex” means using any tools or strategies that help to reduce the risk of STIs. You can try one, two, or all these methods, or try some others if none of these work for you. There are lots of ways to reduce getting or spreading STIs."
+  },
+  {
+    "id": 9,
+    "text": "<b>Are all STIs curable?</b>",
+    "choices": [
+      "Yes", "No"
+    ],
+    "correctChoiceIndex": 1,
+    "explanation": "Some STIs, like chlamydia and gonorrhea, are curable with antibiotics. Others, such as HIV and herpes, are not curable but can be managed. Additionally, STIs like HPV and hepatitis B have vaccines for prevention, and HIV can be prevented with PrEP (pre-exposure prophylaxis)."
+  }
+
+
+]
