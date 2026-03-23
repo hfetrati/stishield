@@ -28,9 +28,28 @@ STIShield is a native Android mHealth application built in **Kotlin** and **Jetp
 
 ## Screenshots
 
-| Knowledge Quest | STI Smart | Health Guard | Safe Talk | Leaderboard |
-|----------------|----------|--------------|-----------|-------------|
-| <img src="assets/knowledge_quest.jpg" width="180"/> | <img src="assets/sti_smart.jpg" width="180"/> | <img src="assets/health_guard.jpg" width="180"/> | <img src="assets/safe_talk.jpg" width="180"/> | <img src="assets/leaderboard.jpg" width="180"/> |
+<div style="width: 100%; overflow-x: auto; white-space: nowrap;">
+  <table style="min-width: 1000px; table-layout: fixed; width: 100%;">
+    <thead>
+      <tr>
+        <th>Knowledge Quest</th>
+        <th>STI Smart</th>
+        <th>Health Guard</th>
+        <th>Safe Talk</th>
+        <th>Leaderboard</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr align="center">
+        <td><img src="assets/knowledge_quest.jpg" width="180"></td>
+        <td><img src="assets/sti_smart.jpg" width="180"></td>
+        <td><img src="assets/health_guard.jpg" width="180"></td>
+        <td><img src="assets/safe_talk.jpg" width="180"></td>
+        <td><img src="assets/leaderboard.jpg" width="180"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ## Tech Stack
 
