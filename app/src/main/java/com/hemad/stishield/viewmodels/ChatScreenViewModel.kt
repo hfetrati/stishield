@@ -110,7 +110,7 @@ class ChatScreenViewModel(persona: String) : ViewModel() {
         errorState.value = null
     }
 
-    suspend fun clearHistory() {
+    fun clearHistory() {
         try {
             repository.clearHistory()
         } catch (error: Exception) {
@@ -128,6 +128,11 @@ class ChatScreenViewModel(persona: String) : ViewModel() {
             }
         }
 
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        repository.close()
     }
 
 

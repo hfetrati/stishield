@@ -34,8 +34,12 @@ class ChatRepository(persona: String) {
 
     }
 
-    suspend fun clearHistory(){
+    fun clearHistory(){
         gpt_service.clearHistory()
+    }
+
+    fun close() {
+        gpt_service.close()
     }
 
 

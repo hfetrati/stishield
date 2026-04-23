@@ -16,9 +16,9 @@ if (localPropertiesFile.exists()) {
     localProperties.load(localPropertiesFile.inputStream())
 }
 
-val openAiKey = localProperties.getProperty("OPENAI_API_KEY") ?: "MISSING_KEY"
-val firstAssistantId = localProperties.getProperty("FIRST_ASSISTANT_ID") ?: ""
-val secondAssistantId = localProperties.getProperty("SECOND_ASSISTANT_ID") ?: ""
+val openAiKey = localProperties.getProperty("OPENAI_API_KEY") ?: ""
+val firstPromptId = localProperties.getProperty("FIRST_PROMPT_ID") ?: ""
+val secondPromptId = localProperties.getProperty("SECOND_PROMPT_ID") ?: ""
 
 android {
     namespace = "com.hemad.stishield"
@@ -37,8 +37,8 @@ android {
         }
 
         buildConfigField("String", "OPENAI_API_KEY", "\"$openAiKey\"")
-        buildConfigField("String", "FIRST_ASSISTANT_ID", "\"$firstAssistantId\"")
-        buildConfigField("String", "SECOND_ASSISTANT_ID", "\"$secondAssistantId\"")
+        buildConfigField("String", "FIRST_PROMPT_ID", "\"$firstPromptId\"")
+        buildConfigField("String", "SECOND_PROMPT_ID", "\"$secondPromptId\"")
     }
 
     buildTypes {
@@ -74,6 +74,8 @@ android {
 dependencies {
 
     implementation("io.ktor:ktor-client-okhttp:2.3.9")
+    implementation("io.ktor:ktor-client-core:2.3.9")
+    implementation("io.ktor:ktor-client-content-negotiation:2.3.9")
     implementation("androidx.compose.foundation:foundation:1.6.8")
     implementation ("com.aallam.openai:openai-client:3.8.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3")

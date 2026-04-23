@@ -61,8 +61,7 @@ STIShield is a native Android mHealth application built in **Kotlin** and **Jetp
 
 ### Backend & APIs
 - **Firebase Firestore** — user data, scores, usage tracking  
-- **OpenAI Assistants API** (via [openai-kotlin](https://github.com/aallam/openai-kotlin))  
-
+- **OpenAI Responses API**
 ### Data Handling
 - **Kotlinx Serialization / JSON** — structured app content  
 
@@ -100,15 +99,15 @@ app/src/main/java/com/hemad/stishield
 - Android Studio
 - Android SDK 24+
 - Firebase project with Firestore configured
-- OpenAI API access and two configured assistant IDs
+- OpenAI API access and two configured prompt IDs
 
 ### Local configuration
 Create or update `local.properties` with:
 
 ```properties
 OPENAI_API_KEY = your_openai_api_key
-FIRST_ASSISTANT_ID = your_first_assistant_id
-SECOND_ASSISTANT_ID = your_second_assistant_id
+FIRST_PROMPT_ID = your_first_prompt_id
+SECOND_PROMPT_ID = your_second_prompt_id
 ```
 
 ### Build and run

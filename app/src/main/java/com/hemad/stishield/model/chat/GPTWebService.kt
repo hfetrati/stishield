@@ -1,86 +1,139 @@
 package com.hemad.stishield.model.chat
 
 import android.util.Log
-import com.aallam.openai.api.BetaOpenAI
-import com.aallam.openai.api.assistant.Assistant
-import com.aallam.openai.api.assistant.AssistantId
-import com.aallam.openai.api.core.Role
-import com.aallam.openai.api.core.Status
-import com.aallam.openai.api.message.MessageContent
-import com.aallam.openai.api.message.MessageRequest
-import com.aallam.openai.api.run.RunRequest
-import com.aallam.openai.api.thread.Thread
-import com.aallam.openai.client.OpenAI
 import com.hemad.stishield.model.common.ChatItem
 import com.hemad.stishield.model.common.Message
-import kotlinx.coroutines.delay
 import com.hemad.stishield.BuildConfig
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.okhttp.OkHttp
+import io.ktor.client.plugins.HttpTimeout
+import io.ktor.client.request.header
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
+import io.ktor.client.statement.bodyAsText
+import io.ktor.http.ContentType
+import io.ktor.http.HttpHeaders
+import io.ktor.http.contentType
+import org.json.JSONArray
+import org.json.JSONObject
 
 class GPTWebService(persona:String) {
 
-    //Replace with your own assistant IDs,
-    val OBINNA_ASSISTANT_ID = BuildConfig.FIRST_ASSISTANT_ID
-    val HANA_ASSISTANT_ID = BuildConfig.SECOND_ASSISTANT_ID
-    val OPENAI_API_KEY = BuildConfig.OPENAI_API_KEY
+    //Set your own prompt IDs and API Key in local.properties
+    private val OBINNA_PROMPT_ID = BuildConfig.FIRST_PROMPT_ID
+    private val HANA_PROMPT_ID = BuildConfig.SECOND_PROMPT_ID
+    private val OPENAI_API_KEY = BuildConfig.OPENAI_API_KEY
 
 
-    @OptIn(BetaOpenAI::class)
-    var thread: Thread? = null
-    @OptIn(BetaOpenAI::class)
-    var assistant: Assistant? = null
-    val openAI = OpenAI(OPENAI_API_KEY)
-    val currentPersona = persona
-    var assistantID = if (currentPersona == "obinna") OBINNA_ASSISTANT_ID else  HANA_ASSISTANT_ID
+    private val currentPersona = persona
+    private var activePromptId = if (currentPersona == "obinna") OBINNA_PROMPT_ID else  HANA_PROMPT_ID
+    private var previousResponseId: String? = null
 
-
-    @OptIn(BetaOpenAI::class)
-    suspend fun getResponse(inputMessage: String): ChatItem.MessageItem {
-
-        try {
-            assistant =
-                assistant ?: openAI.assistant(id = AssistantId(assistantID))
-            thread = thread ?: openAI.thread()
-
-            openAI.message(
-                threadId = thread!!.id,
-                request = MessageRequest(
-                    role = Role.User,
-                    content = inputMessage
-                )
-            )
-
-            val run = openAI.createRun(
-                thread!!.id,
-                request = RunRequest(
-                    assistantId = assistant!!.id,
-                )
-            )
-
-            do {
-                delay(1500)
-                val retrievedRun = openAI.getRun(threadId = thread!!.id, runId = run.id)
-            } while (retrievedRun.status != Status.Completed)
-
-            val assistantMessages = openAI.messages(thread!!.id)
-            val lastMessage = assistantMessages.first()
-            val result = lastMessage.content.first() as? MessageContent.Text
-                ?: error("Unexpected response content.")
-
-            return ChatItem.MessageItem(Message(body = result.text.value, role = Message.SenderRole.BOT))
-
-
-        } catch (error: Exception) {
-            Log.d("GPTService", error.toString())
-            throw error
+    private val client = HttpClient(OkHttp) {
+        install(HttpTimeout) {
+            requestTimeoutMillis = 120_000
+            connectTimeoutMillis = 30_000
+            socketTimeoutMillis = 120_000
         }
-
-
     }
 
+    suspend fun getResponse(inputMessage: String): ChatItem.MessageItem {
+        try {
+            val requestBody = buildResponsesRequest(inputMessage).toString()
 
-    @OptIn(BetaOpenAI::class)
-    suspend fun clearHistory(){
-        thread?.let { openAI.delete(id = it.id) }
+            val response = client.post("https://api.openai.com/v1/responses") {
+                contentType(ContentType.Application.Json)
+                header(HttpHeaders.Authorization, "Bearer $OPENAI_API_KEY")
+                setBody(requestBody)
+            }
+
+            val responseText = response.bodyAsText()
+
+            if (response.status.value !in 200..299) {
+                Log.e("GPTWebService", "OpenAI error: ${response.status.value} $responseText")
+                throw Exception("OpenAI request failed: ${response.status.value} $responseText")
+            }
+
+            val json = JSONObject(responseText)
+
+            previousResponseId = json.optString("id", null)
+
+            val outputText = extractOutputText(json)
+                ?: throw Exception("No text output found in response: $responseText")
+
+            return ChatItem.MessageItem(
+                Message(
+                    body = outputText,
+                    role = Message.SenderRole.BOT
+                )
+            )
+
+        } catch (e: Exception) {
+            Log.e("GPTWebService", "getResponse failed", e)
+            throw e
+        }
+    }
+
+    private fun buildResponsesRequest(inputMessage: String): JSONObject {
+        val json = JSONObject()
+
+        json.put("model", "gpt-4.1-mini")
+        json.put("store", true)
+
+        val promptObject = JSONObject().apply {
+            put("id", activePromptId)
+        }
+        json.put("prompt", promptObject)
+
+        val inputArray = JSONArray().apply {
+            put(
+                JSONObject().apply {
+                    put("role", "user")
+                    put("content", inputMessage)
+                }
+            )
+        }
+        json.put("input", inputArray)
+
+        previousResponseId?.let {
+            json.put("previous_response_id", it)
+        }
+
+        return json
+    }
+
+    private fun extractOutputText(json: JSONObject): String? {
+        val directText = json.optString("output_text", null)
+        if (!directText.isNullOrBlank()) return directText
+
+        val outputArray = json.optJSONArray("output") ?: return null
+        val builder = StringBuilder()
+
+        for (i in 0 until outputArray.length()) {
+            val outputItem = outputArray.optJSONObject(i) ?: continue
+
+            if (outputItem.optString("type") == "message") {
+                val contentArray = outputItem.optJSONArray("content") ?: continue
+
+                for (j in 0 until contentArray.length()) {
+                    val contentItem = contentArray.optJSONObject(j) ?: continue
+
+                    if (contentItem.optString("type") == "output_text") {
+                        builder.append(contentItem.optString("text"))
+                    }
+                }
+            }
+        }
+
+        return builder.toString().trim().ifBlank { null }
+    }
+
+    fun clearHistory() {
+        previousResponseId = null
+    }
+
+    fun close() {
+        client.close()
     }
 
 
