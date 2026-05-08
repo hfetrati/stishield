@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/architecture-MVVM-orange"/>
 </p>
 
-STIShield is a native Android mHealth application built in **Kotlin** and **Jetpack Compose** using an **MVVM architecture**, designed to deliver gamified and chatbot-driven STI education to young adults, with a focus on African audiences. It integrates LLM-based and rule-based chatbots to provide an engaging, consistent, and personalized experience.
+STI Shield is a native Android mHealth application built in **Kotlin** and **Jetpack Compose** using an **MVVM architecture**, designed to deliver gamified and chatbot-driven STI education to young adults, with a focus on African audiences. It integrates LLM-based and rule-based chatbots to provide an engaging, consistent, and personalized experience, with LLM interactions securely routed through a serverless **AWS backend**.
 
 ## Features
 
@@ -60,7 +60,9 @@ STIShield is a native Android mHealth application built in **Kotlin** and **Jetp
 - **Async:** Kotlin Coroutines  
 
 ### Backend & APIs
-- **Firebase Firestore** — user data, scores, usage tracking  
+- **Firebase Firestore** — user data, scores, usage tracking
+- **AWS API Gateway + AWS Lambda** — secure serverless backend for chatbot requests
+- **AWS Secrets Manager** — secure management of OpenAI API keys and prompt configurations
 - **OpenAI Responses API**
 ### Data Handling
 - **Kotlinx Serialization / JSON** — structured app content  
@@ -99,21 +101,19 @@ app/src/main/java/com/hemad/stishield
 - Android Studio
 - Android SDK 24+
 - Firebase project with Firestore configured
-- OpenAI API access and two configured prompt IDs
-
+- AWS account with Lambda, API Gateway, and Secrets Manager configured
+- OpenAI API access
 ### Local configuration
 Create or update `local.properties` with:
 
 ```properties
-OPENAI_API_KEY = your_openai_api_key
-FIRST_PROMPT_ID = your_first_prompt_id
-SECOND_PROMPT_ID = your_second_prompt_id
+AWS_URL = your_api_gateway_endpoint
 ```
 
 ### Build and run
 1. Clone the repository
 2. Open the project in Android Studio
-3. Add your Firebase configuration and local properties
+3. Configure Firebase and add your AWS API Gateway endpoint to `local.properties`
 4. Sync Gradle
 5. Run on an emulator or Android device
 

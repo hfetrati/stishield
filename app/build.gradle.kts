@@ -16,9 +16,7 @@ if (localPropertiesFile.exists()) {
     localProperties.load(localPropertiesFile.inputStream())
 }
 
-val openAiKey = localProperties.getProperty("OPENAI_API_KEY") ?: ""
-val firstPromptId = localProperties.getProperty("FIRST_PROMPT_ID") ?: ""
-val secondPromptId = localProperties.getProperty("SECOND_PROMPT_ID") ?: ""
+val AWS_URL = localProperties.getProperty("AWS_URL") ?: ""
 
 android {
     namespace = "com.hemad.stishield"
@@ -36,9 +34,8 @@ android {
             useSupportLibrary = true
         }
 
-        buildConfigField("String", "OPENAI_API_KEY", "\"$openAiKey\"")
-        buildConfigField("String", "FIRST_PROMPT_ID", "\"$firstPromptId\"")
-        buildConfigField("String", "SECOND_PROMPT_ID", "\"$secondPromptId\"")
+        buildConfigField("String", "AWS_URL", "\"$AWS_URL\"")
+
     }
 
     buildTypes {
