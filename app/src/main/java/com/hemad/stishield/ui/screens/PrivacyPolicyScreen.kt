@@ -26,7 +26,7 @@ fun PrivacyPolicyScreen(navController: NavHostController) {
         
         <b>2. Data Collection</b>
         
-        We collect and store your email address and nickname for account and leaderboard functionality. Registration timestamp and total app usage time is also recorded. Your data is stored securely using Firebase Firestore, a cloud database service provided by Google. The app may store limited non-sensitive data locally on your device (such as app progress and preferences) to support functionality. Chat interactions are not persistently stored by the app and are cleared after each session. This application was developed as part of an academic research project.
+        We collect and store your email address and nickname for account and leaderboard functionality. Registration timestamp and total app usage time is also recorded. Your data is stored securely using DynamoDB, a cloud database service provided by Amazon. The app may store limited non-sensitive data locally on your device (such as app progress and preferences) to support functionality. Chat interactions are not persistently stored by the app and are cleared after each session. This application was developed as part of an academic research project.
     """.trimIndent()
 
     Scaffold(

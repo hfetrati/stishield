@@ -6,7 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hemad.stishield.model.common.Message
-import com.hemad.stishield.model.chat.ChatRepository
+import com.hemad.stishield.model.gpt.GPTRepository
 import com.hemad.stishield.model.common.ChatItem
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 class ChatScreenViewModel(persona: String) : ViewModel() {
 
     var currentPersona:String = persona
-    var repository:ChatRepository = ChatRepository(currentPersona)
+    var repository:GPTRepository = GPTRepository(currentPersona)
     var messageListScrollState = LazyListState()
     val textFieldState = mutableStateOf("")
     val messageListState = mutableStateListOf<ChatItem>()
@@ -123,7 +123,6 @@ class ChatScreenViewModel(persona: String) : ViewModel() {
         if (!processState.value) {
             viewModelScope.launch {
                 clearHistory()
-                repository = ChatRepository(currentPersona)
                 messageListState.clear()
             }
         }

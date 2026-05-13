@@ -1,4 +1,4 @@
-package com.hemad.stishield.model.chat
+package com.hemad.stishield.model.gpt
 
 import android.util.Log
 import com.hemad.stishield.BuildConfig
@@ -20,7 +20,9 @@ class GPTWebService(persona: String) {
     private var previousResponseId: String? = null
 
     // Replace this with your API Gateway endpoint
-    private val BACKEND_CHAT_URL = BuildConfig.AWS_URL
+    private val BACKEND_BASE_URL = BuildConfig.AWS_URL.trimEnd('/')
+
+    private val BACKEND_CHAT_URL = "$BACKEND_BASE_URL/chat"
 
     private val client = HttpClient(OkHttp) {
         install(HttpTimeout) {

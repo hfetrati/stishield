@@ -6,7 +6,7 @@ import com.hemad.stishield.model.leaderboard.LeaderBoardData
 
 class UserDataRepository(context: Context){
 
-    val firebase = FirebaseWebService()
+    val cloud_db = DatabaseWebService
     val currentcontext = context
 
     private val sharedPreferences: SharedPreferences =
@@ -78,7 +78,7 @@ class UserDataRepository(context: Context){
     suspend fun registerNewUser(newEmail: String, newNickname: String):Result<Unit> {
 
         return try {
-            val result = firebase.registerNewUser(newEmail, newNickname)
+            val result = cloud_db.registerNewUser(newEmail, newNickname)
             result.onSuccess {
                 email = newEmail
                 nickname = newNickname
@@ -92,7 +92,7 @@ class UserDataRepository(context: Context){
     suspend fun updateUserPoints():Result<Unit> {
 
         return try {
-            val result = firebase.syncUserPoints(email!!, points)
+            val result = cloud_db.syncUserPoints(email!!, points)
             result
         } catch (exception: Exception) {
             Result.failure(exception)
@@ -103,7 +103,7 @@ class UserDataRepository(context: Context){
     suspend fun getLeaderboardData(): Result<List<LeaderBoardData>> {
 
         return try {
-            val result = firebase.getLeaderboard()
+            val result = cloud_db.getLeaderboard()
             result
         } catch (exception: Exception) {
             Result.failure(exception)
@@ -112,7 +112,7 @@ class UserDataRepository(context: Context){
 
     suspend fun recordQuizScore(quizDifficulty:String,quizScore:Int):Result<Unit> {
         return try {
-            val result = firebase.recordQuizScore(email!!, quizDifficulty,quizScore)
+            val result = cloud_db.recordQuizScore(email!!, quizDifficulty,quizScore)
             result
         } catch (exception: Exception) {
             Result.failure(exception)
@@ -120,7 +120,7 @@ class UserDataRepository(context: Context){
     }
 
     suspend fun updateUsageTime() {
-        firebase.syncUsageTime(email!!, usageTime)
+        cloud_db.syncUsageTime(email!!, usageTime)
     }
 
 }

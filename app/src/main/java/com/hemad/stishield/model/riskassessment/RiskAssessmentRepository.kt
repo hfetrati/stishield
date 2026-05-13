@@ -6,6 +6,7 @@ import com.hemad.stishield.model.common.ChatItem
 import com.hemad.stishield.model.common.Message
 import com.hemad.stishield.model.common.UserDataRepository
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.decodeFromString
 import java.io.InputStream
 
 class RiskAssessmentRepository(context: Context) {

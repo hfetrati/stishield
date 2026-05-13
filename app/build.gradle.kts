@@ -5,7 +5,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
     id("kotlinx-serialization")
-    id("com.google.gms.google-services")
 
 }
 
@@ -74,7 +73,6 @@ dependencies {
     implementation("io.ktor:ktor-client-core:2.3.9")
     implementation("io.ktor:ktor-client-content-negotiation:2.3.9")
     implementation("androidx.compose.foundation:foundation:1.6.8")
-    implementation ("com.aallam.openai:openai-client:3.8.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3")
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.3")
@@ -92,8 +90,6 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:2.6.1")
     ksp("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
-    implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
-    implementation("com.google.firebase:firebase-firestore")
     implementation("com.github.Breens-Mbaka:BeeTablesCompose:1.2.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

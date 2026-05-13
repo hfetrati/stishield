@@ -1,9 +1,9 @@
-package com.hemad.stishield.model.chat
+package com.hemad.stishield.model.gpt
 
 import com.hemad.stishield.model.common.ChatItem
 import com.hemad.stishield.model.common.Message
 
-class ChatRepository(persona: String) {
+class GPTRepository(persona: String) {
 
     private val gpt_service: GPTWebService = GPTWebService(persona)
     val currentPersona = persona
