@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/architecture-MVVM-orange"/>
 </p>
 
-STI Shield is a native Android mHealth application built in **Kotlin** and **Jetpack Compose** using an **MVVM architecture**, designed to deliver gamified and chatbot-driven STI education to young adults, with a focus on African audiences. It integrates LLM-based and rule-based chatbots to provide an engaging, consistent, and personalized experience, with LLM interactions securely routed through a serverless **AWS backend** using **API Gateway**, **Lambda**, **Secrets Manager**, and **DynamoD**.
+STI Shield is a native Android mHealth application built in **Kotlin** and **Jetpack Compose** using an **MVVM architecture**, designed to deliver gamified and chatbot-driven STI education to young adults, with a focus on African audiences. It integrates LLM-based and rule-based chatbots to provide an engaging, consistent, and personalized experience, with LLM interactions securely routed through a serverless **AWS backend** using **API Gateway**, **Lambda**, **Secrets Manager**, and **DynamoDB**.
 
 ## Features
 
