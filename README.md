@@ -84,7 +84,7 @@ app/src/main/java/com/hemad/stishield
 ├── viewmodels/         # UI state management and interaction logic
 │
 ├── model/
-│   ├── chat/           # SafeTalk logic
+│   ├── gpt/           # SafeTalk logic
 │   ├── quiz/           # STI Smart logic
 │   ├── game/           # Knowledge Quest logic
 │   ├── riskassessment/ # Health Guard logic
