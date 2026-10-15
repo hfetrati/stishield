@@ -1,4 +1,4 @@
-package com.mkrdeveloper.onboardingscreenjetpack
+package com.hemad.stishield.ui.screens
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image

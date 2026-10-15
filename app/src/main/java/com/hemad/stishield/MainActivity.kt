@@ -28,12 +28,12 @@ import com.hemad.stishield.ui.screens.GameProgressScreen
 import com.hemad.stishield.ui.screens.GameScreen
 import com.hemad.stishield.ui.screens.LeaderBoardScreen
 import com.hemad.stishield.ui.screens.MainScreen
+import com.hemad.stishield.ui.screens.OnboardingScreen
 import com.hemad.stishield.ui.screens.PrivacyPolicyScreen
 import com.hemad.stishield.ui.screens.QuizScreen
 import com.hemad.stishield.ui.screens.RegistrationScreen
 import com.hemad.stishield.ui.screens.RiskAssessmentScreen
 import com.hemad.stishield.ui.theme.STIShieldTheme
-import com.mkrdeveloper.onboardingscreenjetpack.OnboardingScreen
 
 
 class MainActivity : ComponentActivity() {
