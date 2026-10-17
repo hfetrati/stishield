@@ -1,0 +1,11 @@
+{
+  "name": "stishield-chat",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Safe Talk chat proxy: forwards persona conversations to the OpenAI Responses API without exposing the key to the client.",
+  "type": "module",
+  "main": "openai.mjs",
+  "engines": {
+    "node": ">=22"
+  }
+}

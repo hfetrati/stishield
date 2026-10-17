@@ -60,10 +60,13 @@ STI Shield is a native Android mHealth application built in **Kotlin** and **Jet
 - **Async:** Kotlin Coroutines  
 
 ### Backend & APIs
+- **AWS API Gateway (HTTP API) + AWS Lambda (Node.js 22)** — serverless backend for OpenAI API access and user data management
 - **AWS DynamoDB** — user data, leaderboard scores, and usage tracking
-- **AWS API Gateway + AWS Lambda** — secure serverless backend for chatbot requests
-- **AWS Secrets Manager** — secure management of OpenAI API keys and prompt configurations
-- **OpenAI Responses API**
+- **AWS Secrets Manager** — OpenAI API key and persona prompt ids, read by Lambda at runtime
+- **AWS SAM** — infrastructure as code; the whole stack deploys from one template
+- **OpenAI Responses API** — stored prompts per doctor persona, conversation state via response ids
+- **Ktor client** — HTTP layer on the Android side
+
 ### Data Handling
 - **Kotlinx Serialization / JSON** — structured app content  
 
@@ -72,62 +75,104 @@ STI Shield is a native Android mHealth application built in **Kotlin** and **Jet
 - **Android Components:** Service (usage tracking), BroadcastReceiver (reminders), AlarmManager (notifications)  
 
 
+## Architecture
+
+No API keys ship in the app. All cloud access goes through API Gateway.
+
+```
+                 ┌─────────────────────────┐
+                 │       Android app       │
+                 │    Kotlin + Compose     │
+                 └────────────┬────────────┘
+                              │  HTTPS / JSON
+                              ▼
+                 ┌─────────────────────────┐
+                 │       API Gateway       │
+                 └──────┬───────────┬──────┘
+                        │           │
+            POST /chat  │           │  POST /users/*
+                        │           │  GET  /leaderboard
+                        ▼           ▼
+         ┌──────────────────┐   ┌──────────────────┐
+         │   Lambda: chat   │   │   Lambda: user   │
+         └────────┬─────────┘   └────────┬─────────┘
+                  │                      │
+                  ▼                      ▼
+         ┌──────────────────┐   ┌──────────────────┐
+         │ Secrets Manager  │   │     DynamoDB     │
+         │  API key and     │   │   user records   │
+         │  prompt ids      │   │                  │
+         └────────┬─────────┘   └──────────────────┘
+                  │
+                  ▼
+         ┌──────────────────┐
+         │      OpenAI      │
+         │  Responses API   │
+         └──────────────────┘
+```
+
+Infrastructure is defined in a [SAM template](backend/template.yaml). See [backend/README.md](backend/README.md) for the API, data model and design notes, and [backend/prompts](backend/prompts/safe-talk-prompt.md) for the Safe Talk system prompt.
+
 ## Project Structure
 
 ```
-app/src/main/java/com/hemad/stishield
-├── ui/
-│   ├── screens/        # Feature screens built with Compose
-│   ├── theme/          # App styling (colors, typography)
-│   └── utilities/      # Reusable UI components
+.
+├── app/src/main/java/com/hemad/stishield     # Android app
+│   ├── ui/
+│   │   ├── screens/        # Feature screens built with Compose
+│   │   ├── theme/          # App styling (colors, typography)
+│   │   └── utilities/      # Reusable UI components
+│   ├── viewmodels/         # UI state management and interaction logic
+│   ├── model/
+│   │   ├── gpt/            # SafeTalk logic
+│   │   ├── quiz/           # STI Smart logic
+│   │   ├── game/           # Knowledge Quest logic
+│   │   ├── riskassessment/ # Health Guard logic
+│   │   ├── leaderboard/    # Leaderboard logic
+│   │   └── common/         # Shared logic (backend client, user data, notifications)
+│   └── MainActivity.kt     # Entry point and navigation setup
 │
-├── viewmodels/         # UI state management and interaction logic
-│
-├── model/
-│   ├── gpt/           # SafeTalk logic
-│   ├── quiz/           # STI Smart logic
-│   ├── game/           # Knowledge Quest logic
-│   ├── riskassessment/ # Health Guard logic
-│   ├── leaderboard/    # Leaderboard logic
-│   └── common/         # Shared logic (AWS backend, user data, notifications)
-│
-└── MainActivity.kt     # Entry point and navigation setup
+└── backend/                                  # AWS serverless backend
+    ├── template.yaml       # SAM: API Gateway, Lambdas, DynamoDB, Secrets Manager, IAM
+    ├── functions/
+    │   ├── chat/           # Safe Talk proxy to OpenAI API
+    │   └── user/           # Users, points, quiz scores, usage, leaderboard
+    └── prompts/            # System prompt used for the Safe Talk doctor personas
 ```
 
 
 ## Setup
 
 ### Prerequisites
-- Android Studio
-- Android SDK 24+
-- AWS account with:
-    - API Gateway
-    - Lambda
-    - DynamoDB
-    - Secrets Manager
-- OpenAI API access
-### Local configuration
-Create or update `local.properties` with:
+- Android Studio with Android SDK 24+
+- An AWS account, the AWS CLI and the AWS SAM CLI
+- An OpenAI API key and two stored prompts (one per doctor persona)
 
-```properties
-AWS_URL = your_api_gateway_endpoint
+### 1. Deploy the backend
+
+```bash
+cd backend
+sam build
+sam deploy --guided
 ```
 
-### Build and run
-1. Clone the repository
-2. Open the project in Android Studio
-3. Configure AWS backend endpoint in `local.properties`
-4. Sync Gradle
-5. Run on an emulator or Android device
+Then set the OpenAI key and prompt ids in the `stishield/openai` secret. Full steps are in [backend/README.md](backend/README.md#deploy).
+
+### 2. Point the app at it
+Create or update `local.properties` in the project root with the `ApiUrl` output from the deploy:
+
+```properties
+AWS_URL = https://<api-id>.execute-api.<region>.amazonaws.com
+```
+
+### 3. Build and run
+1. Open the project in Android Studio
+2. Sync Gradle
+3. Run on an emulator or Android device
 
 ## License
 
-Copyright (c) 2026 Hemad Fetrati
-
-All rights reserved.
-
-This project is provided for educational and portfolio purposes only.
-No part of this codebase may be copied, modified, distributed, or used for commercial purposes without explicit permission from the author.
+This project is licensed under the [MIT License](LICENSE). Third-party assets are excluded; see [Assets & Attribution](#assets--attribution).
 
 
 ## Assets & Attribution

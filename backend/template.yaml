@@ -1,0 +1,147 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  STI Shield serverless backend: an HTTP API in front of two Node.js Lambdas,
+  one DynamoDB table for user data, and a Secrets Manager secret that holds the
+  OpenAI API key and persona prompt ids.
+
+Parameters:
+  TableName:
+    Type: String
+    Default: STIShieldUsers
+    Description: DynamoDB table for users, points, quiz scores and usage time.
+  OpenAISecretName:
+    Type: String
+    Default: stishield/openai
+    Description: >
+      Secrets Manager secret containing OPENAI_API_KEY, OBINNA_PROMPT_ID and
+      HANA_PROMPT_ID. The secret is created empty; set its value after deploy.
+  OpenAIModel:
+    Type: String
+    Default: gpt-4.1-mini
+  DisplayTimeZone:
+    Type: String
+    Default: America/Halifax
+    Description: Time zone used for the human-readable timestamps stored on user records.
+
+Globals:
+  Function:
+    Runtime: nodejs22.x
+    Architectures: [x86_64]
+    Timeout: 45
+
+Resources:
+  HttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: $default
+      RouteSettings:
+        "POST /chat":
+          ThrottlingRateLimit: 5
+          ThrottlingBurstLimit: 10
+      CorsConfiguration:
+        AllowOrigins: ["*"]
+        AllowMethods: [GET, POST]
+        AllowHeaders: [Content-Type]
+
+  UsersTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Ref TableName
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: email
+          AttributeType: S
+      KeySchema:
+        - AttributeName: email
+          KeyType: HASH
+
+  OpenAISecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Ref OpenAISecretName
+      Description: OpenAI API key and prompt ids for the STI Shield chat Lambda.
+      SecretString: '{"OPENAI_API_KEY":"","OBINNA_PROMPT_ID":"","HANA_PROMPT_ID":""}'
+
+  ChatFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: functions/chat/
+      Handler: openai.handler
+      MemorySize: 256
+      Environment:
+        Variables:
+          OPENAI_SECRET_ID: !Ref OpenAISecret
+          OPENAI_MODEL: !Ref OpenAIModel
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action: secretsmanager:GetSecretValue
+              Resource: !Ref OpenAISecret
+      Events:
+        Chat:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /chat
+            Method: POST
+
+  UserFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: functions/user/
+      Handler: users.handler
+      MemorySize: 128
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref UsersTable
+          DISPLAY_TIME_ZONE: !Ref DisplayTimeZone
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - dynamodb:PutItem
+                - dynamodb:UpdateItem
+                - dynamodb:GetItem
+                - dynamodb:Scan
+              Resource: !GetAtt UsersTable.Arn
+      Events:
+        Register:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /users/register
+            Method: POST
+        Points:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /users/points
+            Method: POST
+        QuizScore:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /users/quiz-score
+            Method: POST
+        UsageTime:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /users/usage-time
+            Method: POST
+        Leaderboard:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref HttpApi
+            Path: /leaderboard
+            Method: GET
+
+Outputs:
+  ApiUrl:
+    Description: Base URL to put in the Android app's local.properties as AWS_URL.
+    Value: !Sub "https://${HttpApi}.execute-api.${AWS::Region}.amazonaws.com"
+  UsersTableName:
+    Value: !Ref UsersTable
+  OpenAISecretArn:
+    Value: !Ref OpenAISecret

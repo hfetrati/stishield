@@ -1,0 +1,11 @@
+{
+  "name": "stishield-user",
+  "version": "1.0.0",
+  "private": true,
+  "description": "User registration, points sync, quiz scores, usage tracking and leaderboard backed by DynamoDB.",
+  "type": "module",
+  "main": "users.mjs",
+  "engines": {
+    "node": ">=22"
+  }
+}

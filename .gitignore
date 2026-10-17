@@ -34,3 +34,13 @@ tmp/
 *.tmp
 *.swp
 *.orig
+
+# Backend (SAM / Node)
+.aws-sam/
+node_modules/
+backend/*.zip
+backend/samconfig.local.toml
+backend/env.json
+
+# Claude Code session files
+.claude/
