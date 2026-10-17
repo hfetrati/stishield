@@ -2,7 +2,7 @@
 
 The following prompt was used to configure the LLM chatbot module (Safe Talk) of the STI Shield app. The prompt defined the chatbot’s persona, scope of support, communication style, evidence requirements, safety limitations, referral behavior, and transparency guidance. Few-shot examples used during implementation are not included because they primarily reinforced the behavioral instructions already specified in the prompt and did not introduce additional intervention content.
 
-This is the prompt for the female doctor persona, Dr. Hana. The male doctor persona, Dr. Obinna, uses the same prompt with only the persona details in section 1 changed (name and gender). Both prompts are stored as OpenAI stored prompts; the chat Lambda selects one by the prompt id held in the `stishield/openai` secret, based on the `persona` field of each request.
+This is the prompt for the female doctor persona, Dr. Hana. The male doctor persona, Dr. Obinna, uses the same prompt with the persona details in section 1 changed (name, gender, country of origin, etc.). Both prompts are stored as OpenAI stored prompts; the chat Lambda selects one by the prompt id held in the `stishield/openai` secret, based on the `persona` field of each request.
 
 ---
 
