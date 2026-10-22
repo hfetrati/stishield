@@ -26,7 +26,8 @@ the Lambda holds no conversation state.
 
 ## Data model
 
-One DynamoDB table, `STIShieldUsers`, partition key `email`.
+One DynamoDB table with partition key `email`. Its generated name is shown in
+the `UsersTableName` deploy output.
 
 ```json
 {
@@ -41,7 +42,7 @@ One DynamoDB table, `STIShieldUsers`, partition key `email`.
 
 ## Deploy
 
-Prerequisites: an AWS account, the [AWS CLI](https://aws.amazon.com/cli/) configured with credentials, and the [SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html).
+Prerequisites: an AWS account, the [AWS CLI](https://aws.amazon.com/cli/) configured with deployment permissions, the [SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html), and local Node.js 22 and npm installed for `sam build`.
 
 ```bash
 cd backend
@@ -49,22 +50,23 @@ sam build
 sam deploy --guided
 ```
 
-After the first deploy:
+Enter a stack name unique to your AWS account and region. AWS generates the API URL and resource names,
+including the table and secret. After deployment, copy the `ApiUrl` output into
+`local.properties` as `AWS_URL`, and fill in the secret identified by
+`OpenAISecretArn`:
 
-1. Copy the `ApiUrl` output into the Android project's `local.properties` as
-   `AWS_URL`.
-2. In the Secrets Manager console open `stishield/openai` and set its value to:
-   ```json
-   {
-     "OPENAI_API_KEY": "sk-...",
-     "OBINNA_PROMPT_ID": "pmpt_...",
-     "HANA_PROMPT_ID": "pmpt_..."
-   }
-   ```
-   The prompt ids come from stored prompts created in the OpenAI dashboard, one
-   per doctor persona, using the text in
-   [prompts/safe-talk-prompt.md](prompts/safe-talk-prompt.md).
+```json
+{
+  "OPENAI_API_KEY": "sk-...",
+  "OBINNA_PROMPT_ID": "pmpt_...",
+  "HANA_PROMPT_ID": "pmpt_..."
+}
+```
 
+The prompt ids come from the stored prompts in the OpenAI dashboard, using
+[prompts/safe-talk-prompt.md](prompts/safe-talk-prompt.md).
+
+Deleting the stack deletes its DynamoDB table, user data, and OpenAI secret.
 
 ## Limitations
 
@@ -82,8 +84,8 @@ After the first deploy:
   so each request reads only the top entries.
 - **No per-user limit on chat requests.** Every message sent to `/chat` is
   forwarded to OpenAI, and each one costs money. API Gateway throttles the
-  route to a few requests per second in total, which caps the worst-case
-  bill, but that limit is shared by everyone. Nothing stops one user from
+  route at a target rate of 5 requests per second with a burst limit of 10. The limit
+  is shared by everyone, and nothing stops one user from
   sending many messages slowly over a day. A per-user daily cap would need
   the backend to know who is calling, so it depends on adding authentication
   first.

@@ -1,7 +1,6 @@
 version = 0.1
 
 [default.global.parameters]
-stack_name = "stishield-backend"
 region = "us-east-2"
 
 [default.build.parameters]

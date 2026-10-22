@@ -6,16 +6,6 @@ Description: >
   OpenAI API key and persona prompt ids.
 
 Parameters:
-  TableName:
-    Type: String
-    Default: STIShieldUsers
-    Description: DynamoDB table for users, points, quiz scores and usage time.
-  OpenAISecretName:
-    Type: String
-    Default: stishield/openai
-    Description: >
-      Secrets Manager secret containing OPENAI_API_KEY, OBINNA_PROMPT_ID and
-      HANA_PROMPT_ID. The secret is created empty; set its value after deploy.
   OpenAIModel:
     Type: String
     Default: gpt-4.1-mini
@@ -28,13 +18,20 @@ Globals:
   Function:
     Runtime: nodejs22.x
     Architectures: [x86_64]
-    Timeout: 45
+    Timeout: 15
 
 Resources:
   HttpApi:
     Type: AWS::Serverless::HttpApi
     Properties:
       StageName: $default
+      # An inline definition lets SAM set the chat integration timeout.
+      DefinitionBody:
+        openapi: "3.0.1"
+        info:
+          title: STI Shield API
+          version: "1.0"
+        paths: {}
       RouteSettings:
         "POST /chat":
           ThrottlingRateLimit: 5
@@ -47,7 +44,6 @@ Resources:
   UsersTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: !Ref TableName
       BillingMode: PAY_PER_REQUEST
       AttributeDefinitions:
         - AttributeName: email
@@ -59,8 +55,8 @@ Resources:
   OpenAISecret:
     Type: AWS::SecretsManager::Secret
     Properties:
-      Name: !Ref OpenAISecretName
       Description: OpenAI API key and prompt ids for the STI Shield chat Lambda.
+      # Replace these placeholders in Secrets Manager after deployment.
       SecretString: '{"OPENAI_API_KEY":"","OBINNA_PROMPT_ID":"","HANA_PROMPT_ID":""}'
 
   ChatFunction:
@@ -69,6 +65,7 @@ Resources:
       CodeUri: functions/chat/
       Handler: openai.handler
       MemorySize: 256
+      Timeout: 28
       Environment:
         Variables:
           OPENAI_SECRET_ID: !Ref OpenAISecret
@@ -85,6 +82,7 @@ Resources:
             ApiId: !Ref HttpApi
             Path: /chat
             Method: POST
+            TimeoutInMillis: 29000
 
   UserFunction:
     Type: AWS::Serverless::Function

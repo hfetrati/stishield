@@ -156,7 +156,7 @@ sam build
 sam deploy --guided
 ```
 
-Then set the OpenAI key and prompt ids in the `stishield/openai` secret. Full steps are in [backend/README.md](backend/README.md#deploy).
+Then set the OpenAI key and prompt ids in the secret identified by the `OpenAISecretArn` deploy output. Full steps are in [backend/README.md](backend/README.md#deploy).
 
 ### 2. Point the app at it
 Create or update `local.properties` in the project root with the `ApiUrl` output from the deploy:

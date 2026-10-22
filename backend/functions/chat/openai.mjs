@@ -6,13 +6,13 @@
 // `previous_response_id`, so the Lambda itself is stateless and the API key
 // never leaves AWS.
 
-const SECRET_ID = process.env.OPENAI_SECRET_ID || "stishield/openai";
-const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4.1-mini";
+const SECRET_ID = process.env.OPENAI_SECRET_ID?.trim();
+const OPENAI_MODEL = process.env.OPENAI_MODEL?.trim();
 const OPENAI_RESPONSES_URL = "https://api.openai.com/v1/responses";
 
 let cachedSecret = null;
 
-async function getSecret() {
+async function getSecret(abortSignal) {
   if (cachedSecret) return cachedSecret;
 
   const { SecretsManagerClient, GetSecretValueCommand } = await import(
@@ -21,7 +21,8 @@ async function getSecret() {
 
   const client = new SecretsManagerClient({});
   const result = await client.send(
-    new GetSecretValueCommand({ SecretId: SECRET_ID })
+    new GetSecretValueCommand({ SecretId: SECRET_ID }),
+    { abortSignal }
   );
 
   cachedSecret = JSON.parse(result.SecretString);
@@ -58,7 +59,14 @@ function response(statusCode, body) {
 }
 
 export const handler = async (event) => {
+  // Leave time to return an error before the Lambda and API deadlines.
+  const requestSignal = AbortSignal.timeout(25_000);
   try {
+    if (!SECRET_ID || !OPENAI_MODEL) {
+      console.error("OPENAI_SECRET_ID and OPENAI_MODEL must be configured");
+      return response(503, { error: "Chat service is not configured" });
+    }
+
     const body = JSON.parse(event.body || "{}");
     const { persona, message, previousResponseId } = body;
 
@@ -66,7 +74,7 @@ export const handler = async (event) => {
       return response(400, { error: "Missing message" });
     }
 
-    const secret = await getSecret();
+    const secret = await getSecret(requestSignal);
 
     const promptId =
       persona === "obinna" ? secret.OBINNA_PROMPT_ID : secret.HANA_PROMPT_ID;
@@ -85,6 +93,7 @@ export const handler = async (event) => {
 
     const openAiResponse = await fetch(OPENAI_RESPONSES_URL, {
       method: "POST",
+      signal: requestSignal,
       headers: {
         Authorization: `Bearer ${secret.OPENAI_API_KEY}`,
         "Content-Type": "application/json",
@@ -107,6 +116,9 @@ export const handler = async (event) => {
     });
   } catch (err) {
     console.error(err);
+    if (requestSignal.aborted) {
+      return response(504, { error: "Chat request timed out. Please try again." });
+    }
     return response(500, { error: "Server error" });
   }
 };
