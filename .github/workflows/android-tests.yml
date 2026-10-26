@@ -33,8 +33,10 @@ jobs:
           java-version: '17'
           cache: gradle
 
-      - name: Install the required Android SDK packages
-        run: sdkmanager "platforms;android-34" "build-tools;34.0.0"
+      - name: Set up the Android SDK and required packages
+        uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools platforms;android-34 build-tools;34.0.0'
 
       - name: Run unit tests
         run: ./gradlew :app:testDebugUnitTest --no-daemon --stacktrace
