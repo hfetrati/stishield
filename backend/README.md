@@ -3,6 +3,21 @@
 Serverless backend for the STI Shield Android app. The OpenAI key stays in
 Secrets Manager and never ships in the APK.
 
+## Project Structure
+
+```text
+backend/
+├── template.yaml              # AWS SAM: API Gateway, Lambda, DynamoDB, Secrets Manager, and IAM
+├── samconfig.toml              # SAM CLI defaults
+├── functions/
+│   ├── chat/
+│   │   └── openai.mjs          # Safe Talk proxy to the OpenAI API
+│   └── user/
+│       └── users.mjs           # Registration, points, quiz scores, usage time, and leaderboard
+└── prompts/
+    └── safe-talk-prompt.md      # System prompt for the Safe Talk doctor personas
+```
+
 ## API
 
 All request and response bodies are JSON. The API is unauthenticated; see
